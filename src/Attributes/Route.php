@@ -185,12 +185,13 @@ class Route {
         protected $get = [],                // <span style="color:#E97230;">get 数据</span>
 
         protected $post = [],               // <span style="color:#E97230;">post 数据</span>
+        protected $file = [],               // <span style="color:#E97230;">上传文件数据</span>
         protected $json = [],               // <span style="color:#E97230;">json 数据</span>
         protected $xml = [],                // <span style="color:#E97230;">xml 数据</span>
-        protected $file = [],               // <span style="color:#E97230;">上传文件数据</span>
 
         protected $requireBody = false,     // <span style="color:#E97230;">body 是否必须</span>
         // 标准方法参数
+        // TODO
         protected $tags = [],               // <span style="color:#E97230;">方法分组标签</span>
         protected $summary = '',            // <span style="color:#E97230;">方法简介</span>
         protected $description = '',        // <span style="color:#E97230;">方法详细说明</span>
@@ -214,6 +215,7 @@ class Route {
         protected $g_tags = [],             // <span style="color:#E97230;">Tag 的描述列表</span>
         protected $g_externalDocs = [],     // <span style="color:#E97230;">外部文档列表</span>
         protected $g_extend = [],           // <span style="color:#E97230;">扩展选项</span>
+        //
         protected $validator = null         // <span style="color:#E97230;">路由参数自定义验证器</span>
     ) {
         // 路由路径预处理
@@ -258,7 +260,7 @@ class Route {
 
                 // 用户自定义验证器
                 if (is_callable($custom_validator)) {
-                    $verifiedData = $custom_validator($verifiedData);
+                    $verifiedData = $custom_validator($request, $config);
                 }
 
                 // 传递验证后的数据

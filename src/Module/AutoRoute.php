@@ -139,7 +139,7 @@ class AutoRoute {
                 $arguments = $attribute->getArguments();
 
                 /** 读取路由Path */
-                $path = preg_replace("/^\.\//", '', isset($arguments[0]) ? $arguments[0] : $arguments['path']);
+                $path = preg_replace("/^\.\//", '', isset($arguments[0]) ? $arguments[0] : $arguments['route']);
 
                 // 路由对应方法
                 $callback = $ref->name . '@' . $method->name;
