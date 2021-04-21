@@ -46,7 +46,7 @@ class AutoRoute {
         }
 
         /** OPTIONS 请求方法处理 */
-        Route::options('/{all:.+}', function () { return response(''); });
+        Route::options('/{all:.*}', function () { return response(''); });
     }
 
     /**
@@ -161,7 +161,9 @@ class AutoRoute {
                     $basePath = strtolower(preg_replace("/([a-z])([A-Z])/", "$1-$2", $basePath));
 
                     // 路径中移除 controller 目录
-                    $basePath = str_replace('/controller/', '/', $basePath);
+                    $basePath = str_replace('/controller', '', $basePath);
+                    // 路径中移除 index 类名
+                    $basePath = str_replace('/index', '', $basePath);
 
                     // 拼接实际路径
                     $path = $basePath . (empty($path) ? '' : '/' . $path);
