@@ -113,4 +113,11 @@ class OpenAPI {
             ]
         );
     }
+
+    /**
+     * @return array
+     */
+    public static function getComponents(): array {
+        return static::$components;
+    }
 }

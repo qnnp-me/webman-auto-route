@@ -255,12 +255,14 @@ class Route {
                 $custom_validator = $this->validator;
                 $config           = $this->config;
 
-                // 默认验证器
-                $verifiedData = Validator::validate($request, $config);
+                $request->route_config = $config;
 
                 // 用户自定义验证器
                 if (is_callable($custom_validator)) {
-                    $verifiedData = $custom_validator($request, $config);
+                    $verifiedData = $custom_validator($request, ...$parameters);
+                } else {
+                    // 默认验证器
+                    $verifiedData = Validator::validate($request, ...$parameters);
                 }
 
                 // 传递验证后的数据
@@ -384,7 +386,6 @@ class Route {
 
     protected function prepareBody($data, $type = 'post',) {
         if (count($data) == 0) return null;
-        $properties = [];
         //
         $request_type = match ($type) {
             'file' => 'multipart/form-data',
@@ -392,7 +393,18 @@ class Route {
             'xml' => 'application/xml',
             default => 'application/x-www-form-urlencoded'
         };
+        $properties   = [];
         $required     = [];
+        $xml_root     = 'root';
+        if ($type == 'xml') {
+            if (isset($data['root'])) {
+                $xml_root = $data['root'];
+                unset($data['root']);
+            } elseif (isset($data[0]) && $data[0]) {
+                $xml_root = $data[0];
+                unset($data[0]);
+            }
+        }
         foreach ($data as $key => $conf) {
             if (is_array($conf)) {
                 if (isset($conf['required'])) {
@@ -406,31 +418,33 @@ class Route {
                 // 因为 webman 框架的 $request->file() 只 支持这种形式的上传
                 if (
                     isset($conf['type']) && $conf['type'] == 'file' && $type == 'post'
-                    || count($this->file) > 0
+                    || (count($this->file) > 0 && $type == 'post')
                 ) {
                     $request_type = 'multipart/form-data';
                 }
             } else {
-                $properties[$conf] = [
-                    'type' => 'string'
-                ];
+                $properties[$conf] = ['type' => 'string'];
                 if ($type == 'file') {
                     $properties[$conf]['type'] = 'file';
                 }
             }
         }
-        $this->requestBody = array_replace_recursive(
-            [
-                'content' => [
-                    $request_type => [
-                        'schema' => [
-                            'required'   => $required,
-                            'type'       => 'object',
-                            'properties' => $properties,
-                        ],
+        $data = [
+            'content' => [
+                $request_type => [
+                    'schema' => [
+                        'properties' => $properties,
+                        'required'   => $required,
+                        'type'       => 'object'
                     ]
                 ]
-            ],
+            ]
+        ];
+        if ($type == 'xml') {
+            $data['content'][$request_type]['schema']['xml'] = ['name' => $xml_root];
+        }
+        $this->requestBody = array_replace_recursive(
+            $data,
             $this->requestBody
         );
 

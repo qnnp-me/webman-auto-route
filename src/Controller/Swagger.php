@@ -6,8 +6,10 @@ namespace WebmanPress\AutoRoute\Controller;
 
 use support\Response;
 use WebmanPress\AutoRoute\Attributes\Route;
+use WebmanPress\AutoRoute\Module\OpenAPI;
 
 class Swagger {
+
     #[Route('/swagger/{all:.+}')]
     public function getStaticFiles(
         $request,
@@ -21,10 +23,14 @@ class Swagger {
         return response('<h1>404</h1>')->withStatus(404);
     }
 
-    #[Route('/swagger.json')]
-    public function getDoc(): Response {
-        return json(\WebmanPress\AutoRoute\Module\OpenAPI::generate());
+    #[Route('/swagger{slash:[/]?}')]
+    public function getSwaggerIndex(): Response {
+        return response('')->file(dirname(__DIR__) . '/public/swagger/index.html');
     }
 
+    #[Route('/openapi.json')]
+    public function getDoc(): Response {
+        return json(OpenAPI::generate());
+    }
 
 }

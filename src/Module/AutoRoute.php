@@ -110,7 +110,7 @@ class AutoRoute {
      * <h2 style="color:#E97230;">扫描所有注解路由</h2>
      *
      * @param string $class <span style="color:#E97230;">类名</span>
-     * @param string $namespace
+     * @param string $namespace <span style="color:#E97230;">基本命名空间</span>
      *
      * @throws ReflectionException
      * @throws Exception
