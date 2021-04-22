@@ -1,8 +1,6 @@
 <?php
 
-
 namespace WebmanPress\AutoRoute\Module;
-
 
 class OpenAPI {
     protected static string $openapi      = '3.0.0';
@@ -56,10 +54,8 @@ class OpenAPI {
     }
 
     static function addPath(array $paths) {
-        /** 读取方法路径和方法参数 */
         foreach ($paths as $path => $method_config) {
             !isset(static::$paths[$path]) && static::$paths[$path] = [];
-            /** 读取方法对应的参数 */
             foreach ($method_config as $method => $_values) {
                 static::$paths[$path][$method] = $_values;
             }
@@ -97,10 +93,6 @@ class OpenAPI {
         static::$extend = array_replace_recursive(static::$extend, $extend);
     }
 
-    static function setComponents($components) {
-        static::$components = array_replace_recursive(static::$components, $components);
-    }
-
     static function setServers($servers) {
         static::$servers = array_replace_recursive(static::$servers, $servers);
     }
@@ -114,10 +106,11 @@ class OpenAPI {
         );
     }
 
-    /**
-     * @return array
-     */
     public static function getComponents(): array {
         return static::$components;
+    }
+
+    static function setComponents($components) {
+        static::$components = array_replace_recursive(static::$components, $components);
     }
 }

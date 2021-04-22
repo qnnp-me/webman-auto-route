@@ -1,6 +1,5 @@
 <?php
 
-
 namespace WebmanPress\AutoRoute\Attributes;
 
 use Attribute;
@@ -11,11 +10,6 @@ use Webman\Route\Route as RouteObject;
 use WebmanPress\AutoRoute\Module\OpenAPI;
 use WebmanPress\AutoRoute\Module\Validator;
 
-/**
- * Class AutoRoute
- *
- * @package WebmanPress\Attributes\AutoRoute
- */
 #[Attribute(Attribute::IS_REPEATABLE | Attribute::TARGET_METHOD)]
 class Route {
     public string   $path   = '';

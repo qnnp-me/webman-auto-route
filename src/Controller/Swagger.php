@@ -1,8 +1,6 @@
 <?php
 
-
 namespace WebmanPress\AutoRoute\Controller;
-
 
 use support\Response;
 use WebmanPress\AutoRoute\Attributes\Route;

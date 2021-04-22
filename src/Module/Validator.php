@@ -1,8 +1,6 @@
 <?php
 
-
 namespace WebmanPress\AutoRoute\Module;
-
 
 use Exception;
 use support\Request;
@@ -63,7 +61,6 @@ class Validator {
         $cookies = [];
         $query   = [];
 
-
         // 分配 parameters
         foreach ($parameters as $parameter) {
             switch ($parameter['in']) {
@@ -81,7 +78,6 @@ class Validator {
             }
         }
 
-
         // 分配 requestBody
         if (isset($requestBody['content']))
             foreach ($requestBody as $type => $conf) {
@@ -89,7 +85,6 @@ class Validator {
             }
         if (isset($requestBody['required']) && $requestBody['required'] && !$request->rawBody())
             throw new Exception('request body 不能为空', 400);
-
 
         // ==============================
         $result = $config;

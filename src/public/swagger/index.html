@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Swagger UI</title>
-    <link rel="stylesheet" type="text/css" href="/swagger/swagger-ui.css"/>
-    <link rel="icon" type="image/png" href="/swagger/favicon-32x32.png" sizes="32x32"/>
-    <link rel="icon" type="image/png" href="/swagger/favicon-16x16.png" sizes="16x16"/>
+    <link href="/swagger/swagger-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="/swagger/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+    <link href="/swagger/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
     <style>
         html {
             box-sizing: border-box;
@@ -38,12 +38,12 @@
 <body>
 <div id="swagger-ui"></div>
 
-<script src="/swagger/swagger-ui-bundle.js" charset="UTF-8"></script>
-<script src="/swagger/swagger-ui-standalone-preset.js" charset="UTF-8"></script>
+<script charset="UTF-8" src="/swagger/swagger-ui-bundle.js"></script>
+<script charset="UTF-8" src="/swagger/swagger-ui-standalone-preset.js"></script>
 <script>
     window.onload = function () {
         // Begin OpenAPI UI call region
-        const ui  = SwaggerUIBundle(
+        const ui = SwaggerUIBundle(
             {
                 // displayRequestDuration: 60000,  // 请求超时时间？，毫秒
                 // maxDisplayedTags    : 0,      // 显示标签组数量，0全部
