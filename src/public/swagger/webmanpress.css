@@ -9,13 +9,66 @@
  * @link      https://main.qnnp.me
  * @license   https://opensource.org/licenses/MIT MIT License
  */
+html {
+    box-sizing: border-box;
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    background: #fafafa;
+}
+
+#footer {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#footer a {
+    color: #4990e2;
+    text-decoration: none;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
+
+.swagger-ui .topbar form.download-url-wrapper {
+    display: none;
+}
+
+.topbar .wrapper .topbar-wrapper {
+    position: relative;
+}
+
+.topbar .wrapper .topbar-wrapper:after {
+    content: 'Webman Auto Route';
+    display: block;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    font-size: 26px;
+}
+
 .swagger-ui .info {
     margin: 20px 0;
 }
+
 .swagger-ui .scheme-container {
     padding: 10px 0;
     margin: 0 0 20px 0;
 }
+
 .swagger-ui .opblock .opblock-summary-method {
     font-weight: 400;
     padding: 5px 10px;

@@ -4,7 +4,8 @@
   "require": {
     "php": ">=8.0",
     "workerman/webman-framework": ">=1.0",
-    "workerman/validation": "^3.0"
+    "workerman/validation": "^3.0",
+    "swagger-api/swagger-ui": "^3.48"
   },
   "license": "MIT",
   "authors": [

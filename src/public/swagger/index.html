@@ -10,123 +10,23 @@
   ~ @license   https://opensource.org/licenses/MIT MIT License
   -->
 
-<!-- HTML for static distribution bundle build -->
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>Swagger UI</title>
-    <link href="/swagger/swagger-ui.css" rel="stylesheet" type="text/css"/>
-    <link href="/swagger/webmanpress.css" rel="stylesheet" type="text/css"/>
     <link href="/swagger/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
     <link href="/swagger/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
-    <style>
-        html {
-            box-sizing: border-box;
-            overflow: -moz-scrollbars-vertical;
-            overflow-y: scroll;
-        }
-
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit;
-        }
-
-        body {
-            margin: 0;
-            background: #fafafa;
-        }
-
-        #swagger-ui {
-            margin-bottom: 50px;
-        }
-
-        .swagger-ui .topbar form.download-url-wrapper {
-            display: none;
-        }
-    </style>
+    <link href="/swagger/swagger-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="/swagger/webmanpress.css" rel="stylesheet" type="text/css"/>
 </head>
-
 <body>
 <div id="swagger-ui"></div>
-
+<div id="footer">
+    <a href="https://github.com/qnnpDotMe/webman-auto-route" target="_blank">Webman Auto Route</a>
+</div>
 <script charset="UTF-8" src="/swagger/swagger-ui-bundle.js"></script>
 <script charset="UTF-8" src="/swagger/swagger-ui-standalone-preset.js"></script>
-<script>
-    window.onload = function () {
-        // Begin OpenAPI UI call region
-        const ui  = SwaggerUIBundle(
-            {
-                // displayRequestDuration: 60000,  // 请求超时时间？，毫秒
-                // maxDisplayedTags    : 0,      // 显示标签组数量，0全部
-                // requestSnippets     : {},     //
-                // urls                : [
-                //     {
-                //         name: window.location.protocol + "//" + window.location.host + "/openapi.json",
-                //         url : window.location.protocol + "//" + window.location.host + "/openapi.json"
-                //     }
-                // ],
-                url         : window.location.protocol + "//" + window.location.host + "/openapi.json",
-                dom_id      : '#swagger-ui',
-                deepLinking : true,   // 链接自动打开 Tag
-                docExpansion: 'list', // 默认标签展示方式，list|full|none
-                // filter              : true,   // 标签筛选器
-                tryItOutEnabled     : true,   // 测试按钮默认启用
-                showExtensions      : true,   //
-                showCommonExtensions: true,   //
-                persistAuthorization: true,   // 保存验证信息
-                syntaxHighlight     : {       // 代码高亮主题
-                    active: true,
-                    theme : 'obsidian'
-                },
-                tagsSorter(a, b) {              // 标签组排序
-                    if (a === 'default') {
-                        return 1;
-                    }
-                    if (b === 'default') {
-                        return -1;
-                    }
-                    return a.localeCompare(b, "zh-hans");
-                    // if (a.match(/^\//) && !b.match(/^\//)) {
-                    //     return 1;
-                    // }
-                    // if (!a.match(/^\//) && b.match(/^\//)) {
-                    //     return -1;
-                    // }
-                    // if (a.match(/^\//) && b.match(/^\//)) {
-                    //     if (a > b) {
-                    //         return 1;
-                    //     }
-                    //     return -1;
-                    // }
-                    // if (a[0] > b[0]) {
-                    //     if (a === 'default') {
-                    //         return 1;
-                    //     }
-                    //     if (b === 'default') {
-                    //         return -1;
-                    //     }
-                    //     return 1;
-                    // }
-                    // return -1;
-                },
-                responseInterceptor(res) {  // 请求响应回调
-                    // console.log(res);
-                    return res;
-                },
-                presets: [
-                    SwaggerUIBundle.presets.apis,
-                    SwaggerUIStandalonePreset
-                ],
-                plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl,
-                ],
-                layout : "StandaloneLayout"
-            });
-        // End OpenAPI UI call region
-        window.ui = ui;
-    };
-</script>
+<script charset="UTF-8" src="/swagger/swagger-init.js"></script>
 </body>
 </html>

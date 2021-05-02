@@ -10,6 +10,64 @@
  * @license   https://opensource.org/licenses/MIT MIT License
  */
 
+html {
+  box-sizing: border-box;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background: #fafafa;
+}
+
+#swagger-ui {
+}
+
+#footer {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+
+  a {
+    color: #4990e2;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.swagger-ui .topbar form.download-url-wrapper {
+  display: none;
+}
+
+.topbar {
+  .wrapper {
+    .topbar-wrapper {
+      position: relative;
+
+      &:after {
+        content: 'Webman Auto Route';
+        display: block;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        font-size: 26px;
+      }
+    }
+  }
+}
+
 // 文档信息样式
 .swagger-ui .info {
   margin: 20px 0;

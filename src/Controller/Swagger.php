@@ -19,22 +19,24 @@ use WebmanPress\AutoRoute\Module\OpenAPI;
 
 class Swagger {
 
-  #[Route('/swagger/{all:.+}')]
+  #[
+    Route('/swagger{slash:[/]?}'),
+    Route('/swagger/{all:.+}'),
+  ]
   public function getStaticFiles(
     $request,
-    $path,
+    $path = null,
   ): Response {
-    $file = realpath(dirname(__DIR__) . '/public/swagger/' . $path);
-    if (is_file($file)) {
-      return response('')->file($file);
+    if (empty($path) || $path == '/') $path = 'index.html';
+    $custom_file  = realpath(dirname(__DIR__) . '/public/swagger/' . $path);
+    $swagger_file = realpath(base_path() . '/vendor/swagger-api/swagger-ui/dist/' . $path);
+    if (is_file($custom_file)) {
+      return response('')->file($custom_file);
+    } elseif (is_file($swagger_file)) {
+      return response('')->file($swagger_file);
     }
 
     return response('<h1>404</h1>')->withStatus(404);
-  }
-
-  #[Route('/swagger{slash:[/]?}')]
-  public function getSwaggerIndex(): Response {
-    return response('')->file(dirname(__DIR__) . '/public/swagger/index.html');
   }
 
   #[Route('/openapi.json')]
