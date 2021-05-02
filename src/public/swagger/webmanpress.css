@@ -1,45 +1,47 @@
+/**
+ * This file is part of webman-auto-route.
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @author    qnnp<qnnp@qnnp.me>
+ * @copyright qnnp<qnnp@qnnp.me>
+ * @link      https://main.qnnp.me
+ * @license   https://opensource.org/licenses/MIT MIT License
+ */
 .swagger-ui .info {
     margin: 20px 0;
 }
-
 .swagger-ui .scheme-container {
     padding: 10px 0;
     margin: 0 0 20px 0;
 }
-
 .swagger-ui .opblock .opblock-summary-method {
     font-weight: 400;
     padding: 5px 10px;
     font-size: 12px;
 }
-
 .swagger-ui .opblock-tag {
     font-size: 18px;
     padding: 5px;
 }
-
 .swagger-ui .opblock .opblock-summary-operation-id,
 .swagger-ui .opblock .opblock-summary-path,
 .swagger-ui .opblock .opblock-summary-path__deprecated {
     font-size: 12px;
 }
-
 .swagger-ui .btn,
 .swagger-ui select {
     font-size: 12px;
 }
-
 .swagger-ui .btn.authorize span {
     padding: 4px 5px 0;
 }
-
 .swagger-ui .btn.authorize svg {
     width: 15px;
     height: 15px;
 }
-
 .swagger-ui .wrapper {
     max-width: 1000px;
 }
-
 /*# sourceMappingURL=webmanpress.css.map */
