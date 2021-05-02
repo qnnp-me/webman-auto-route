@@ -1,5 +1,7 @@
-[__Webman Auto Route__](https://packagist.org/packages/qnnp/webman-auto-route) 是一个基于 PHP8 注解开发的一个 [__
-Webman__](https://www.workerman.net/doc/webman) 扩展组件。
+## [__在线文档 (Link)__](https://thoughts.aliyun.com/workspaces/60803fedd61dc1001a37cee9)
+
+[__Webman Auto Route__](https://packagist.org/packages/qnnp/webman-auto-route) 是一个基于 PHP8 注解开发的一个
+[__Webman__](https://www.workerman.net/doc/webman) 扩展组件。
 
 ***
 
@@ -86,7 +88,7 @@ class Index {
     Route('test1',
       Info: [  // 大写字母开头的，或者 g_* 开头的参数一般为 OpenAPI 文档根节
                // 点参数，全项目只需要声明一次，多次声明会被自动覆盖
-        info::title          => 'WebmanPress',
+        info::title          => 'WebmanPress', // 对应的 OpenAPI 节点信息可以使用对应的对象提示
         info::description    => '项目描述',
         info::version        => '0.0.1',
         info::termsOfService => 'http://localhost/service.html',
