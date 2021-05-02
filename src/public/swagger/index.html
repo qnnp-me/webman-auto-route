@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Swagger UI</title>
     <link href="/swagger/swagger-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="/swagger/webmanpress.css" rel="stylesheet" type="text/css"/>
     <link href="/swagger/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
     <link href="/swagger/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
     <style>
@@ -48,20 +49,22 @@
                 // displayRequestDuration: 60000,  // 请求超时时间？，毫秒
                 // maxDisplayedTags    : 0,      // 显示标签组数量，0全部
                 // requestSnippets     : {},     //
-                urls        : [
-                    {
-                        name: window.location.protocol + "//" + window.location.host + "/openapi.json",
-                        url : window.location.protocol + "//" + window.location.host + "/openapi.json"
-                    }
-                ],
+                // urls                : [
+                //     {
+                //         name: window.location.protocol + "//" + window.location.host + "/openapi.json",
+                //         url : window.location.protocol + "//" + window.location.host + "/openapi.json"
+                //     }
+                // ],
+                url         : window.location.protocol + "//" + window.location.host + "/openapi.json",
                 dom_id      : '#swagger-ui',
                 deepLinking : true,   // 链接自动打开 Tag
                 docExpansion: 'list', // 默认标签展示方式，list|full|none
-                filter      : true,   // 标签筛选器
-                // tryItOutEnabled     : true,   // 测试按钮默认启用
-                // showExtensions      : true,   //
-                // showCommonExtensions: true,   //
-                syntaxHighlight: {       // 代码高亮主题
+                // filter              : true,   // 标签筛选器
+                tryItOutEnabled     : true,   // 测试按钮默认启用
+                showExtensions      : true,   //
+                showCommonExtensions: true,   //
+                persistAuthorization: true,   // 保存验证信息
+                syntaxHighlight     : {       // 代码高亮主题
                     active: true,
                     theme : 'obsidian'
                 },
