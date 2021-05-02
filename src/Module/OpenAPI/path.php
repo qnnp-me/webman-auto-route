@@ -9,7 +9,6 @@ namespace WebmanPress\AutoRoute\Module\OpenAPI;
 class path {
   /**
    * <div style="color:#E97230;">string</div>
-   * <span style="color:#E97230;">TODO </span>
    */
   const ref = '$ref';
   /**

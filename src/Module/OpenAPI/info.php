@@ -40,32 +40,4 @@ class info {
    * <span style="color:#E97230;">项目版本</span>
    */
   const version = 'version';
-
-
-  /**
-   * TODO OpenAPI Object
-   * TODO Paths Object
-   * TODO Path Item Object
-   * TODO Operation Object
-   * TODO External Documentation Object
-   * TODO Parameter Object
-   * TODO Request Body Object
-   * TODO Media Type Object
-   * TODO Encoding Object
-   * TODO Responses Object
-   * TODO Response Object
-   * TODO Callback Object
-   * TODO Example Object
-   * TODO Link Object
-   * TODO Header Object
-   * TODO Tag Object
-   * TODO Reference Object
-   * TODO Schema Object
-   * TODO Discriminator Object
-   * TODO XML Object
-   * TODO Security Scheme Object
-   * TODO OAuth Flows Object
-   * TODO OAuth Flow Object
-   * TODO Security Requirement Object
-   */
 }
