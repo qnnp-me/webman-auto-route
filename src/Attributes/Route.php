@@ -437,9 +437,10 @@ class Route {
       $path_name_list = [];
       foreach ($path_params as $name => $conf) {
         // 读取出路径参数正则内的注释
-        preg_match("/(\(\?#[^)]*([^)]*([^(]*\([^()]*\)[^)]*(?R)*)[^(]*)*[^(]*\))/", $conf[0], $matches);
+        $is_matched = preg_match("/(\(\?#[^)]*([^)]*([^(]*\([^()]*\)[^)]*(?R)*)[^(]*)*[^(]*\))/", $conf[0], $matches);
         // 生成字段描述
-        $desc             = count($matches) > 0 ? preg_replace("/(^\(\?#|\)$)/", '', $matches[1]) : '路径参数';
+        $desc             = $is_matched ? preg_replace("/(^\(\?#|\)$)/", '', $matches[1]) : '路径参数';
+        $pattern          = "^" . ($is_matched ? str_replace($matches[1], '', $conf[0]) : $conf[0]) . "$";
         $path_name_list[] = [
           parameter::name        => $name,
           parameter::in          => 'path',
@@ -447,7 +448,7 @@ class Route {
           parameter::description => $desc,
           parameter::schema      => [
             schema::type    => 'string',
-            schema::pattern => "^" . str_replace($matches[1], '', $conf[0]) . "$",
+            schema::pattern => $pattern,
           ],
         ];
 
