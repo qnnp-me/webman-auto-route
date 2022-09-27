@@ -15,6 +15,7 @@ namespace WebmanPress\AutoRoute\Attributes;
 
 use Attribute;
 use FastRoute\RouteParser\Std;
+use ReflectionMethod;
 use support\Request;
 use Webman\Route as RouteClass;
 use Webman\Route\Route as RouteObject;
@@ -403,6 +404,10 @@ class Route {
         // 传递验证后的数据
         $request->verifiedData = $verifiedData;
 
+        $ref = new ReflectionMethod(...$callback);
+
+        $callback[0] = $ref->isStatic()?$callback[0]:new $callback[0]();
+
         return $callback($request, ...$parameters);
       }
     )->middleware($this->middleware);
@@ -548,7 +553,6 @@ class Route {
           $conf['required'] && $required[] = $key;
           unset($conf['required']);
         }
-        $properties[$key] = $conf;
 
         // post
         // 携带文件上传字段的话转成 multipart/form-data
@@ -565,6 +569,8 @@ class Route {
             $request_type = 'multipart/form-data';
           }
         }
+        if (!isset($conf['type'])) $conf['type'] = 'string';
+        $properties[$key] = $conf;
       } else {
         $properties[$conf] = ['type' => 'string'];
         if ($type == 'file') {
